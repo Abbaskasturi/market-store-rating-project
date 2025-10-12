@@ -31,7 +31,7 @@ To run this project locally, you will need to set up both the backend and fronte
     Create a file named `.env` in the `backend` root directory and add the following:
     ```env
     PORT=5001
-    JWT_SECRET=your-super-strong-and-secret-jwt-key
+    JWT_SECRET=secrete
     ```
 
 4.  **Start the server:**
@@ -66,7 +66,7 @@ To run this project locally, you will need to set up both the backend and fronte
 
 ---
 
-## API Documentation (8 Key Endpoints) 📚
+## API Documentation (8 Key Endpoints)
 
 The base URL for all API endpoints is `http://localhost:5001/api`.
 
