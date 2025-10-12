@@ -1,0 +1,12 @@
+.store-list { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+.store-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+.store-info h3 { margin-top: 0; }
+.rating-info { font-style: italic; color: #7f8c8d; }
+.user-rating-info { font-weight: bold; color: #2980b9; }
+.rating-action { display: flex; gap: 0.5rem; align-items: center; }
+.rating-select, .rate-button { padding: 8px 12px; font-size: 0.9rem; border-radius: 4px; }
+.rate-button { background-color: #27ae60; color: white; border: none; cursor: pointer; }
+@media (max-width: 600px) {
+  .store-card { flex-direction: column; align-items: flex-start; }
+  .rating-action { margin-top: 1rem; width: 100%; }
+}

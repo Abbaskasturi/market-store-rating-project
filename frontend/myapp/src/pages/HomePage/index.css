@@ -1,0 +1,7 @@
+.home-container { display: flex; justify-content: center; align-items: center; min-height: calc(100vh - 80px); text-align: center; background: linear-gradient(to right, #6dd5ed, #2193b0); color: white; }
+.home-content h1 { font-size: 3rem; margin-bottom: 1rem; color: white; }
+.home-content p { font-size: 1.2rem; margin-bottom: 2rem; }
+.home-buttons { display: flex; justify-content: center; gap: 1rem; }
+.home-btn { padding: 12px 24px; font-size: 1rem; text-decoration: none; border-radius: 5px; font-weight: bold; transition: transform 0.2s; }
+.login-btn { background-color: #fff; color: #2193b0; }
+.signup-btn { background-color: transparent; color: #fff; border: 2px solid #fff; }

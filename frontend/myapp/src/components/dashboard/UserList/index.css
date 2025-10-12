@@ -1,0 +1,10 @@
+.user-list-container table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+.user-list-container th, .user-list-container td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #ddd; }
+.user-list-container th { background-color: #f2f2f2; font-weight: bold; }
+@media screen and (max-width: 600px) {
+  .user-list-container table, thead, tbody, th, td, tr { display: block; }
+  .user-list-container thead tr { position: absolute; top: -9999px; left: -9999px; }
+  .user-list-container tr { border: 1px solid #ccc; margin-bottom: 5px; }
+  .user-list-container td { border: none; border-bottom: 1px solid #eee; position: relative; padding-left: 50%; }
+  .user-list-container td:before { position: absolute; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap; font-weight: bold; content: attr(data-label); }
+}

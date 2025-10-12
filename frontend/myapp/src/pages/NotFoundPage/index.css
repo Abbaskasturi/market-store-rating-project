@@ -1,0 +1,23 @@
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  text-align: center;
+}
+
+.not-found-container h1 {
+  font-size: 6rem;
+  margin: 0;
+}
+
+.home-link {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 10px 20px;
+  background-color: #1888ff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
