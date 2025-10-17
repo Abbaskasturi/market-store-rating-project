@@ -1,6 +1,8 @@
-# Store Rating Full-Stack Application
+# Store Rating Full-Stack Application 
 
 This is a full-stack web application built for the Roxiler coding challenge. It allows users to rate stores, with role-based access control for administrators, normal users, and store owners. The backend is built with Node.js/Express.js and SQLite, and the frontend is built with React.js.
+
+## App Link : https://market-store-rating-project-av7c.vercel.app/login
 
 ## Default Admin Credentials 
 
@@ -15,7 +17,7 @@ The application is seeded with a default administrator account upon first launch
 
 To run this project locally, you will need to set up both the backend and frontend services.
 
-### Backend Setup (Port 5001)
+### Backend Setup (Port 5000)
 
 1.  **Navigate to the backend directory:**
     ```bash
@@ -30,15 +32,15 @@ To run this project locally, you will need to set up both the backend and fronte
 3.  **Setup Environment Variables:**
     Create a file named `.env` in the `backend` root directory and add the following:
     ```env
-    PORT=5001
-    JWT_SECRET=secrete
+    PORT=5000
+    JWT_SECRET=secrete_key
     ```
 
 4.  **Start the server:**
     ```bash
     npm start
     ```
-    The backend API will be running at `http://localhost:5001`.
+    The backend API will be running at `http://localhost:5000`.
 
 ### Frontend Setup (Port 3000)
 
@@ -55,7 +57,7 @@ To run this project locally, you will need to set up both the backend and fronte
 3.  **Setup Environment Variables:**
     Create a file named `.env` in the `frontend` root directory and add the following:
     ```env
-    REACT_APP_API_URL=http://localhost:5001
+    REACT_APP_API_URL=http://localhost:5001 or render url 
     ```
 
 4.  **Start the React application:**
@@ -241,10 +243,14 @@ The base URL for all API endpoints is `http://localhost:5001/api`.
         }
     }
     ```
-<img width="1920" height="1080" alt="Screenshot (1118)" src="https://github.com/user-attachments/assets/455a95b7-a26c-46c4-8a79-002424f0e3b6" />
-<img width="1920" height="1080" alt="Screenshot (1119)" src="https://github.com/user-attachments/assets/61f6eebf-4020-4442-8c94-dd17454a4a28" />
-<img width="1920" height="1080" alt="Screenshot (1120)" src="https://github.com/user-attachments/assets/946945b4-93d6-403c-8e31-6167cf166a4d" />
-<img width="1920" height="1080" alt="Screenshot (1121)" src="https://github.com/user-attachments/assets/f6f97526-eff3-4c4d-9403-8e8d01a22700" />
-<img width="1920" height="1080" alt="Screenshot (1122)" src="https://github.com/user-attachments/assets/96da8a44-f9e7-42b0-9e93-89df69807076" />
+<img width="1920" height="1080" alt="Screenshot (1152)" src="https://github.com/user-attachments/assets/45ef14b4-1af0-4445-b8f3-277ec1cc0a94" />
+<img width="1920" height="1080" alt="Screenshot (1153)" src="https://github.com/user-attachments/assets/31c08060-8021-4080-b148-9087196ddfb3" />
+<img width="1920" height="1080" alt="Screenshot (1154)" src="https://github.com/user-attachments/assets/4d77faa6-edcc-4a88-a450-1e87a61eaba1" />
+<img width="1920" height="1080" alt="Screenshot (1155)" src="https://github.com/user-attachments/assets/3c88235d-5767-474f-82f9-163e1fcf5470" />
+<img width="1920" height="1080" alt="Screenshot (1156)" src="https://github.com/user-attachments/assets/50cabbff-61af-408d-904c-0479e46a2e89" />
+
+
+
+
 
 
