@@ -2,7 +2,7 @@
 
 This is a full-stack web application built for the Roxiler coding challenge. It allows users to rate stores, with role-based access control for administrators, normal users, and store owners. The backend is built with Node.js/Express.js and SQLite, and the frontend is built with React.js.
 
-## App Link : https://market-store-rating-project-av7c.vercel.app/login
+## App Link : https://market-store-rating-project-av7c.vercel.app/
 
 ## Default Admin Credentials 
 
