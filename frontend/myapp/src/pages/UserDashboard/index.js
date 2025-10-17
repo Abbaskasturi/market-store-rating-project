@@ -1,37 +1,53 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getUserStores, submitUserRating } from '../../api';
 import StoreList from '../../components/dashboard/StoreList';
 import './index.css';
 
 const UserDashboard = () => {
-  const [stores, setStores] = useState([]);
+  const [allStores, setAllStores] = useState([]);
+  const [filteredStores, setFilteredStores] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
 
-  const fetchStores = useCallback(async () => {
+  const fetchStores = async () => {
     setLoading(true);
     try {
-      const params = { name: searchTerm };
-      const response = await getUserStores(params);
-      setStores(response.data.data);
+      const response = await getUserStores({});
+      const data = response.data.data || [];
+      setAllStores(data);
+      setFilteredStores(data);
     } catch (error) {
-      console.error("Failed to fetch stores", error);
+      console.error('Failed to fetch stores', error);
     } finally {
       setLoading(false);
     }
-  }, [searchTerm]);
+  };
 
   useEffect(() => {
     fetchStores();
-  }, [fetchStores]);
+  }, []);
+
+  useEffect(() => {
+    if (!searchTerm.trim()) {
+      setFilteredStores(allStores);
+    } else {
+      const lowerSearch = searchTerm.toLowerCase();
+      const results = allStores.filter(
+        store =>
+          store.name.toLowerCase().includes(lowerSearch) ||
+          store.address.toLowerCase().includes(lowerSearch)
+      );
+      setFilteredStores(results);
+    }
+  }, [searchTerm, allStores]);
 
   const handleRatingSubmit = async (storeId, rating) => {
     try {
       await submitUserRating({ store_id: storeId, rating });
-      fetchStores(); 
-    } catch (error) { 
-      console.error("Failed to submit rating", error);
-      alert("Could not submit rating. Please try again.");
+      fetchStores();
+    } catch (error) {
+      console.error('Failed to submit rating', error);
+      alert('Could not submit rating. Please try again.');
     }
   };
 
@@ -41,7 +57,7 @@ const UserDashboard = () => {
       <div className="search-container">
         <input
           type="text"
-          placeholder="Search for stores by name..."
+          placeholder="Search stores by name or address..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="search-input"
@@ -50,7 +66,7 @@ const UserDashboard = () => {
       {loading ? (
         <p>Loading stores...</p>
       ) : (
-        <StoreList stores={stores} onRate={handleRatingSubmit} />
+        <StoreList stores={filteredStores} onRate={handleRatingSubmit} />
       )}
     </div>
   );

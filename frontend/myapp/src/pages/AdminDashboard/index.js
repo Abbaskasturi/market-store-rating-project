@@ -4,26 +4,29 @@ import StatCard from '../../components/dashboard/StatCard';
 import UserList from '../../components/dashboard/UserList';
 import Button from '../../components/common/Button';
 import AddStoreModal from '../../components/dashboard/AddStoreModal';
-import AddUserModal from '../../components/dashboard/AddUserModal'; 
+import AddUserModal from '../../components/dashboard/AddUserModal';
+import Loader from '../../components/Loader';
 import './index.css';
 
 const AdminDashboard = () => {
   const [stats, setStats] = useState({ totalUsers: 0, totalStores: 0, totalRatings: 0 });
   const [users, setUsers] = useState([]);
+  const [filteredUsers, setFilteredUsers] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
   const [isStoreModalOpen, setIsStoreModalOpen] = useState(false);
   const [isUserModalOpen, setIsUserModalOpen] = useState(false);
 
   const fetchData = useCallback(async () => {
-  
     setLoading(true);
     try {
       const statsRes = await getAdminDashboard();
       setStats(statsRes.data.data);
       const usersRes = await adminGetUsers();
       setUsers(usersRes.data.data);
+      setFilteredUsers(usersRes.data.data);
     } catch (error) {
-      console.error("Failed to fetch admin data", error);
+      console.error('Failed to fetch admin data', error);
     } finally {
       setLoading(false);
     }
@@ -33,9 +36,22 @@ const AdminDashboard = () => {
     fetchData();
   }, [fetchData]);
 
+  useEffect(() => {
+    if (!searchTerm) {
+      setFilteredUsers(users);
+    } else {
+      const filtered = users.filter((user) =>
+        [user.name, user.email, user.address, user.role]
+          .filter(Boolean)
+          .some((field) => field.toLowerCase().includes(searchTerm.toLowerCase()))
+      );
+      setFilteredUsers(filtered);
+    }
+  }, [searchTerm, users]);
+
   const handleStoreAdded = () => {
     setIsStoreModalOpen(false);
-    fetchData(); 
+    fetchData();
   };
 
   const handleUserAdded = () => {
@@ -43,7 +59,7 @@ const AdminDashboard = () => {
     fetchData();
   };
 
-  if (loading) return <p>Loading dashboard...</p>;
+  if (loading) return <Loader />;
 
   return (
     <div className="page-container">
@@ -64,9 +80,19 @@ const AdminDashboard = () => {
         <StatCard title="Total Ratings" value={stats.totalRatings} />
       </div>
 
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Search by Name, Email, Address, or Role"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="search-input"
+        />
+      </div>
+
       <div className="user-list-container">
         <h2>All Users</h2>
-        <UserList users={users} />
+        <UserList users={filteredUsers} />
       </div>
     </div>
   );

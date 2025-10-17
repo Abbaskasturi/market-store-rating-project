@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getOwnerDashboard } from '../../api';
 import StatCard from '../../components/dashboard/StatCard';
 import './index.css';
+import { FaStar } from "react-icons/fa6";
 
 const OwnerDashboard = () => {
   const [dashboardData, setDashboardData] = useState({ averageRating: 0, raters: [] });
@@ -49,7 +50,7 @@ const OwnerDashboard = () => {
                 <tr key={index}>
                   <td>{rater.name}</td>
                   <td>{rater.email}</td>
-                  <td>{rater.rating} ★</td>
+                  <td>{rater.rating} <FaStar/></td>
                 </tr>
               ))}
             </tbody>

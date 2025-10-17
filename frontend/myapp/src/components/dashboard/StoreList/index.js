@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { FaStar } from "react-icons/fa";
 import './index.css';
+
 
 const StoreList = ({ stores, onRate }) => {
   const [ratings, setRatings] = useState({});
@@ -17,13 +19,13 @@ const StoreList = ({ stores, onRate }) => {
           <div className="store-info">
             <h3>{store.name}</h3>
             <p>{store.address}</p>
-            <p className="rating-info">Overall: {store.overallRating ? store.overallRating.toFixed(1) : 'N/A'} ★</p>
-            {store.userSubmittedRating && <p className="user-rating-info">Your Rating: {store.userSubmittedRating} ★</p>}
+            <p className="rating-info">Overall: {store.overallRating ? store.overallRating.toFixed(1) : 'N/A'} <FaStar/></p>
+            {store.userSubmittedRating && <p className="user-rating-info">Your Rating: {store.userSubmittedRating} <FaStar/></p>}
           </div>
           <div className="rating-action">
             <select onChange={(e) => handleRatingChange(store.id, e.target.value)} value={ratings[store.id] || ''} className="rating-select">
               <option value="" disabled>Rate</option>
-              {[1, 2, 3, 4, 5].map(r => <option key={r} value={r}>{r} ★</option>)}
+              {[1, 2, 3, 4, 5].map(r => <option key={r} value={r}>{r} <FaStar/></option>)}
             </select>
             <button onClick={() => handleSubmitRating(store.id)} className="rate-button">Submit</button>
           </div>
